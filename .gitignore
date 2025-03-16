@@ -1,0 +1,9 @@
+# macOS system files
+.DS_Store
+src/.DS_Store
+src/components/.DS_Store
+src/screens/.DS_Store
+src/services/.DS_Store
+
+# Ignore the entire assets directory
+src/assets/
