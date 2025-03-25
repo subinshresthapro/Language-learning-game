@@ -503,44 +503,4 @@ class ContentGameIntegration {
     }
     
     try {
-      // Update last session timestamp
-      this.userProgress.lastSession = new Date().toISOString();
-      
-      // Save to local storage
-      await contentService.saveUserProgressToLocal(this.userProgress);
-      
-      // If user is logged in, save to cloud
-      if (this.userProgress.userId) {
-        await contentService.saveUserProgressToCloud(
-          this.userProgress.userId,
-          this.userProgress
-        );
-      }
-      
-      console.log('User progress saved');
-    } catch (error) {
-      console.error('Error saving user progress:', error);
-    }
-  }
-
-  /**
-   * Generate learning metrics report
-   * @returns {Object} - Learning metrics
-   */
-  generateLearningMetrics() {
-    if (!this.learningProgressTracker || !this.userProgress) {
-      return null;
-    }
-    
-    // Get all content items
-    const allItems = this.getAllVocabularyItems();
-    
-    // Get learning sessions
-    const sessions = this.userProgress.sessions || [];
-    
-    // Generate progress report
-    return this.learningProgressTracker.generateProgressReport(allItems, sessions);
-  }
-}
-
-export default new ContentGameIntegration();
+      // Update las<response clipped><NOTE>To save on context only part of this file has been shown to you. You should retry this tool after you have searched inside the file with `grep -n` in order to find the line numbers of what you are looking for.</NOTE>

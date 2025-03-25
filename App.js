@@ -2,7 +2,7 @@
  * Main App.js with complete navigation setup for NepaliJets app
  * Integrates authentication, profile, and navigation systems
  */
-
+import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';

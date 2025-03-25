@@ -24,7 +24,13 @@ const SocialSignIn = () => {
       await loginWithGoogle();
       // Navigation will be handled by the auth state listener in AuthContext
     } catch (error) {
-      Alert.alert('Google Sign In Failed', error.message);
+      console.error('Google Sign In Error:', error);
+      // Provide more helpful error message based on error code
+      let errorMessage = error.message;
+      if (error.code === 'auth/configuration-not-found' || error.code === 'auth/invalid-api-key') {
+        errorMessage = 'Firebase configuration error. Please check your Firebase setup.';
+      }
+      Alert.alert('Google Sign In Failed', errorMessage);
     } finally {
       setIsGoogleLoading(false);
     }
@@ -37,7 +43,15 @@ const SocialSignIn = () => {
       await loginWithApple();
       // Navigation will be handled by the auth state listener in AuthContext
     } catch (error) {
-      Alert.alert('Apple Sign In Failed', error.message);
+      console.error('Apple Sign In Error:', error);
+      // Provide more helpful error message based on error code
+      let errorMessage = error.message;
+      if (error.code === 'auth/configuration-not-found' || error.code === 'auth/invalid-api-key') {
+        errorMessage = 'Firebase configuration error. Please check your Firebase setup.';
+      } else if (error.code === 'auth/operation-not-supported-in-this-environment') {
+        errorMessage = 'Apple Sign In is not supported in this environment. Please try on an iOS device or web.';
+      }
+      Alert.alert('Apple Sign In Failed', errorMessage);
     } finally {
       setIsAppleLoading(false);
     }
